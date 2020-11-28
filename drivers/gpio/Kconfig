@@ -1590,6 +1590,24 @@ config GPIO_VIPERBOARD
 
 endmenu
 
+config GPIO_USER
+	tristate "GPIO Chip Drivers in Userspace"
+	help
+	  Say yes here to enable an API for userspace programs to provide
+	  GPIO chip devices.
+
+	  This is intended primarily for equipment that provides GPIOs
+	  indirectly through an external system connected over USB, aimed
+	  primarily at prototyping and development of software which will
+	  eventually interact with a kernel-based GPIO chip driver. These
+	  commonly connect to a system via a non-trivial protocol, perhaps
+	  over USB serial, and therefore require setup and parsing which
+	  can be better handled in userspace.
+
+	  Userspace GPIO chip devices are therefore primarily intended for
+	  use via the GPIO character device interface, and so you may wish
+	  to also enable GPIO_CDEV.
+
 config GPIO_AGGREGATOR
 	tristate "GPIO Aggregator"
 	help
